@@ -2079,29 +2079,30 @@
             }
         ];
         
-// Otomatis isi category berdasarkan title
-eliteBooks.forEach(book => {
-    const title = book.title.toLowerCase();
-    if (title.includes('ai') || title.includes('kecerdasan buatan') || title.includes('machine learning') || title.includes('deep learning')) {
-        book.category = 'AI';
-    } else if (title.includes('data') || title.includes('big data') || title.includes('data science')) {
-        book.category = 'Data';
-    } else if (title.includes('desain') || title.includes('ui/ux')) {
-        book.category = 'Desain';
-    } else if (title.includes('keamanan') || title.includes('siber') || title.includes('security')) {
-        book.category = 'Keamanan';
-    } else if (title.includes('blockchain')) {
-        book.category = 'Blockchain';
-    } else if (title.includes('algoritma') || title.includes('struktur data') || title.includes('pemrograman') || title.includes('komputer') || title.includes('jaringan') || title.includes('sistem operasi') || title.includes('teknologi') || title.includes('internet')) {
-        book.category = 'Teknologi';
-    } else {
-        book.category = 'Umum';
-    }
-});
-// Otomatis isi desc berdasarkan title
-eliteBooks.forEach(book => {
-    book.desc = `Buku berjudul '${book.title}' ini membahas topik sesuai judulnya dan sangat bermanfaat untuk pembaca yang ingin memperdalam pengetahuan di bidang tersebut.`;
-});
+        // Otomatis isi category berdasarkan title
+        eliteBooks.forEach(book => {
+            const title = book.title.toLowerCase();
+            if (title.includes('ai') || title.includes('kecerdasan buatan') || title.includes('machine learning') || title.includes('deep learning')) {
+                book.category = 'AI';
+            } else if (title.includes('data') || title.includes('big data') || title.includes('data science')) {
+                book.category = 'Data';
+            } else if (title.includes('desain') || title.includes('ui/ux')) {
+                book.category = 'Desain';
+            } else if (title.includes('keamanan') || title.includes('siber') || title.includes('security')) {
+                book.category = 'Keamanan';
+            } else if (title.includes('blockchain')) {
+                book.category = 'Blockchain';
+            } else if (title.includes('algoritma') || title.includes('struktur data') || title.includes('pemrograman') || title.includes('komputer') || title.includes('jaringan') || title.includes('sistem operasi') || title.includes('teknologi') || title.includes('internet')) {
+                book.category = 'Teknologi';
+            } else {
+                book.category = 'Umum';
+            }
+        });
+        
+        // Otomatis isi desc berdasarkan title
+        eliteBooks.forEach(book => {
+            book.desc = `Buku berjudul '${book.title}' ini membahas topik sesuai judulnya dan sangat bermanfaat untuk pembaca yang ingin memperdalam pengetahuan di bidang tersebut.`;
+        });
 
         // Global Variables
         let currentFilter = 'all';
@@ -2117,6 +2118,8 @@ eliteBooks.forEach(book => {
         const bookModal = new bootstrap.Modal(document.getElementById('bookModal'));
         const successNotification = document.getElementById('successNotification');
         const notificationMessage = document.getElementById('notificationMessage');
+        const mobileSearchContainer = document.getElementById('mobileSearchContainer');
+        const mobileFilterInput = document.getElementById('mobileFilterInput');
 
         // Initialize Application
         document.addEventListener('DOMContentLoaded', function() {
@@ -2129,13 +2132,12 @@ eliteBooks.forEach(book => {
         function initializeApp() {
             renderBooks(eliteBooks);
             updateBookCount();
-            setupIntersectionObserver();
         }
 
         // Create Floating Particles
         function createFloatingParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+            const particleCount = 30; // Reduced for mobile performance
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -2161,6 +2163,7 @@ eliteBooks.forEach(book => {
 
             // Filter functionality
             filterInput.addEventListener('input', debounce(handleFilter, 300));
+            mobileFilterInput.addEventListener('input', debounce(handleFilter, 300));
 
             // Category pills
             categoryPills.addEventListener('click', (e) => {
@@ -2189,7 +2192,7 @@ eliteBooks.forEach(book => {
 
         // Handle Filter
         function handleFilter() {
-            searchTerm = filterInput.value.toLowerCase().trim();
+            searchTerm = filterInput.value.toLowerCase().trim() || mobileFilterInput.value.toLowerCase().trim();
             renderBooks(getFilteredBooks());
         }
 
@@ -2234,7 +2237,7 @@ eliteBooks.forEach(book => {
             bookGrid.innerHTML = '';
             if (!Array.isArray(booksToRender) || booksToRender.length === 0) {
                 bookGrid.innerHTML = `
-                    <div class="col-,, text-center py-5">
+                    <div class="col-12 text-center py-5">
                         <i class="fas fa-search fa-4x mb-4 opacity-30"></i>
                         <h3 class="fw-bold mb-3">Tidak ada buku yang ditemukan</h3>
                         <p class="text-muted mb-4">Coba gunakan kata kunci yang berbeda atau jelajahi kategori lain</p>
@@ -2248,11 +2251,9 @@ eliteBooks.forEach(book => {
             booksToRender.forEach((book, index) => {
                 const bookItem = document.createElement('div');
                 bookItem.className = 'elite-grid-item';
-                bookItem.style.opacity = '0';
-                bookItem.style.transform = 'translateY(30px)';
                 const isFavorite = favorites.includes(book.id);
                 const featuredBadge = book.featured ? '<span class="badge bg-warning position-absolute top-0 end-0 m-2"><i class="fas fa-star"></i></span>' : '';
-                const coverSrc = book.cover || book.coverUrl || '/logo512.png';
+                const coverSrc = book.cover || '/logo512.png';
                 bookItem.innerHTML = `
                     <div class="elite-card h-100 position-relative">
                         ${featuredBadge}
@@ -2260,31 +2261,26 @@ eliteBooks.forEach(book => {
                             <img src="${coverSrc}" 
                                  class="img-fluid w-100" 
                                  alt="${book.title || ''}"
-                                 style="height: 320px; object-fit: cover;"
                                  loading="lazy"
                                  onerror="this.onerror=null;this.src='/logo512.png';">
                         </div>
-                        <div class="p-4 position-relative" style="z-index: 2;">
-                            <h5 class="mb-2 fw-bold">${book.title || ''}</h5>
+                        <div class="p-3 position-relative" style="z-index: 2;">
+                            <h5 class="mb-2 fw-bold" style="font-size: 0.95rem;">${book.title || ''}</h5>
                             <p class="text-muted small mb-2">oleh ${book.author || ''}</p>
-                            <p class="small mb-3 book-description" style="font-size: 0.85rem; line-height: 1.4;">${book.desc ? book.desc.substring(0, 80) : ''}...</p>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex justify-content-between align-items-center mt-3">
                                 <div class="rating-display">
                                     ${'<i class="fas fa-star star"></i>'.repeat(Math.floor(book.rating || 0))}
                                     ${(book.rating && book.rating % 1 >= 0.5) ? '<i class="fas fa-star-half-alt star"></i>' : ''}
                                     <span class="text-white ms-1 small">${book.rating || ''}</span>
                                 </div>
                             </div>
-                            <div class="d-flex gap-2">
+                            <div class="d-flex gap-2 mt-2">
                                 <button class="btn btn-elite btn-sm rounded-pill flex-grow-1" onclick="openBookModal(${book.id})">
-                                    <i class="fas fa-eye me-1"></i> Lihat Detail
+                                    <i class="fas fa-eye me-1"></i> Detail
                                 </button>
                                 <button class="btn ${isFavorite ? 'btn-warning' : 'btn-outline-warning'} btn-sm rounded-pill px-3" onclick="toggleFavorite(${book.id})">
                                     <i class="fas fa-heart"></i>
                                 </button>
-                                ${book.file ? `<button class="btn btn-outline-success btn-sm rounded-pill px-3" onclick="downloadBook(${book.id})">
-                                    <i class="fas fa-download"></i>
-                                </button>` : ''}
                             </div>
                         </div>
                     </div>
@@ -2295,11 +2291,6 @@ eliteBooks.forEach(book => {
                     }
                 });
                 bookGrid.appendChild(bookItem);
-                setTimeout(() => {
-                    bookItem.style.transition = `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s`;
-                    bookItem.style.opacity = '1';
-                    bookItem.style.transform = 'translateY(0)';
-                }, 100);
             });
         }
 
@@ -2310,7 +2301,7 @@ eliteBooks.forEach(book => {
             document.getElementById('modalBookTitle').textContent = book.title || '';
             document.getElementById('modalBookAuthor').textContent = book.author ? `oleh ${book.author}` : '';
             document.getElementById('modalBookDesc').textContent = book.desc || '';
-            const coverSrc = book.cover || book.coverUrl || '/logo512.png';
+            const coverSrc = book.cover || '/logo512.png';
             document.getElementById('modalBookCover').src = coverSrc;
             document.getElementById('modalBookCover').onerror = function() { this.src = '/logo512.png'; };
             const ratingElement = document.getElementById('modalBookRating');
@@ -2329,29 +2320,24 @@ eliteBooks.forEach(book => {
             bookModal.show();
         }
 
-        // Handle Download
         function handleDownload() {
             const book = eliteBooks.find(b => b.id === window.currentBookId);
             if (!book || !book.file) {
                 showNotification('File buku tidak tersedia untuk diunduh.');
                 return;
             }
-            
             const downloadBtn = document.getElementById('downloadBtn');
             const downloadSpinner = document.getElementById('downloadSpinner');
             const downloadProgress = document.getElementById('downloadProgress');
             const downloadProgressBar = document.getElementById('downloadProgressBar');
-            
             downloadBtn.disabled = true;
             downloadSpinner.style.display = 'inline-block';
             downloadProgress.style.display = 'block';
-            
             let progress = 0;
             const interval = setInterval(() => {
                 progress += Math.random() * 15;
                 if (progress > 100) progress = 100;
                 downloadProgressBar.style.width = progress + '%';
-                
                 if (progress >= 100) {
                     clearInterval(interval);
                     setTimeout(() => {
@@ -2360,15 +2346,19 @@ eliteBooks.forEach(book => {
                         downloadProgress.style.display = 'none';
                         downloadProgressBar.style.width = '0%';
                         showNotification(`✅ ${book.title} berhasil diunduh!`);
-                        
                         // Membuat link download otomatis
                         const link = document.createElement('a');
                         link.href = book.file;
-                        link.download = book.title; // Nama file saat didownload
+                        let fileName = book.title ? book.title.replace(/[^a-zA-Z0-9-_\.]/g, '_') + '.pdf' : 'file.pdf';
+                        link.download = fileName;
                         link.target = '_blank';
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
+                        // Fallback jika download gagal (misal Google Drive)
+                        setTimeout(() => {
+                            window.open(book.file, '_blank');
+                        }, 500);
                     }, 500);
                 }
             }, 100);
@@ -2393,8 +2383,6 @@ eliteBooks.forEach(book => {
             link.click();
             document.body.removeChild(link);
         }
-
-
 
         // Handle Favorite
         function handleFavorite() {
@@ -2433,6 +2421,7 @@ eliteBooks.forEach(book => {
             currentFilter = 'all';
             searchTerm = '';
             filterInput.value = '';
+            mobileFilterInput.value = '';
             updateActiveCategory();
             renderBooks(getFilteredBooks());
             showNotification('🔄 Filter berhasil direset');
@@ -2453,42 +2442,6 @@ eliteBooks.forEach(book => {
             document.getElementById('bookCount').textContent = eliteBooks.length + '+';
         }
 
-        // Intersection Observer for Performance
-        function setupIntersectionObserver() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                            observer.unobserve(img);
-                        }
-                    }
-                });
-            }, { 
-                rootMargin: '200px',
-                threshold: 0.1
-            });
-
-            // Observe future images
-            const observeImages = () => {
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    observer.observe(img);
-                });
-            };
-            
-            // Initial observation
-            observeImages();
-            
-            // Re-observe after renders
-            const originalRenderBooks = renderBooks;
-            renderBooks = function(...args) {
-                originalRenderBooks.apply(this, args);
-                setTimeout(observeImages, 100);
-            };
-        }
-
         // Debounce Function for Performance
         function debounce(func, wait) {
             let timeout;
@@ -2500,6 +2453,42 @@ eliteBooks.forEach(book => {
                 clearTimeout(timeout);
                 timeout = setTimeout(later, wait);
             };
+        }
+
+        // ========== MOBILE FUNCTIONS ==========
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                // Update active nav item
+                document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                event.currentTarget.classList.add('active');
+            }
+        }
+        
+        function showMobileSearch() {
+            mobileSearchContainer.classList.add('visible');
+            mobileFilterInput.focus();
+        }
+        
+        function hideMobileSearch() {
+            mobileSearchContainer.classList.remove('visible');
+            mobileFilterInput.value = '';
+            handleFilter();
+        }
+        
+        function showFavorites() {
+            currentFilter = 'favorites';
+            updateActiveCategory();
+            renderBooks(getFilteredBooks());
+            scrollToSection('booksSection');
+            // Update active nav item
+            document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.getElementById('mobileFavoritesBtn').classList.add('active');
         }
 
         // Keyboard Shortcuts
@@ -2520,18 +2509,14 @@ eliteBooks.forEach(book => {
             }
         });
 
-        // Service Worker for Offline Support
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then((registration) => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch((registrationError) => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
+        // Close mobile search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileSearchContainer.classList.contains('visible') && 
+                !mobileSearchContainer.contains(e.target) &&
+                !document.querySelector('.mobile-search-btn').contains(e.target)) {
+                hideMobileSearch();
+            }
+        });
     </script>
 </body>
 </html>
