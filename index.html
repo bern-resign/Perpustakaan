@@ -592,14 +592,6 @@
                 flex-direction: column;
                 gap: 1.5rem;
             }
-            @keyframes blink {
-    0%, 100% { box-shadow: 0 0 24px 8px #06b6d4, 0 20px 40px rgba(0,0,0,0.15); }
-    50% { box-shadow: 0 0 36px 16px #f59e0b, 0 40px 80px rgba(245,158,11,0.15); }
-}
-
-.blink-target {
-    animation: blink 1s linear infinite;
-}
         }
     </style>
     <script type='text/javascript' src='//pl27243213.profitableratecpm.com/59/e7/a2/59e7a22348897e6670891e3354f0f15f.js'></script>
@@ -2091,7 +2083,37 @@
                 file: "https://drive.google.com/uc?export=download&id=1zuPbotufNN1i6zII48VYIfznNu_txhxJ"
             }
         ];
-        
+        // Fungsi tampil buku
+function renderBooks(books) {
+    const bookGrid = document.getElementById('bookGrid');
+    bookGrid.innerHTML = '';
+    books.forEach(book => {
+        const card = document.createElement('div');
+        card.className = 'elite-card p-3';
+        card.innerHTML = `
+            <div class="book-display mb-3">
+                <img src="${book.cover}" alt="${book.title}" />
+            </div>
+            <h5 class="fw-bold mb-2">${book.title}</h5>
+            <p class="text-muted small mb-2">${book.author}</p>
+            <div class="mb-3">${book.category}</div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-elite flex-grow-1" onclick="openDetail(${book.id})">Detail</button>
+            </div>
+        `;
+        bookGrid.appendChild(card);
+    });
+}
+
+// Fungsi tombol Detail
+function openDetail(id) {
+    // Untuk id=1 ke Buku1.html, id=2 ke Buku2.html, dst.
+    window.location.href = `Buku${id}.html`;
+}
+
+// Panggil fungsi saat halaman dimuat
+renderBooks(eliteBooks);
+</script>
         // Otomatis isi category berdasarkan title
         eliteBooks.forEach(book => {
             const title = (book.title || '').toLowerCase();
