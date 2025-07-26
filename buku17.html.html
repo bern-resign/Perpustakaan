@@ -431,7 +431,71 @@
     </div>
 
     <script>
-        // Same JavaScript as buku16.html
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay and duration
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Add mouse move effect to book cover
+        function addMouseEffect() {
+            const bookCover = document.querySelector('.book-cover');
+            const container = document.querySelector('.container');
+            
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                
+                const rotateX = (y - 0.5) * 10;
+                const rotateY = (x - 0.5) * -10;
+                
+                bookCover.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                bookCover.style.transform = 'rotateX(5deg) rotateY(-5deg) scale(1)';
+            });
+        }
+
+        // Add click animation to stars
+        function addStarInteraction() {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                star.addEventListener('click', () => {
+                    stars.forEach((s, i) => {
+                        if (i <= index) {
+                            s.textContent = '★';
+                            s.style.color = '#f59e0b';
+                        } else {
+                            s.textContent = '☆';
+                            s.style.color = '#6b7280';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            addMouseEffect();
+            addStarInteraction();
+        });
     </script>
 </body>
 </html>
