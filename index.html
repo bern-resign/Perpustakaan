@@ -19,25 +19,19 @@
             --success-color: #10b981;
             --warning-color: #f59e0b;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, var(--primary-dark) 0%, #1e293b 100%);
             color: white;
             overflow-x: hidden;
             min-height: 100vh;
-            padding-bottom: 70px; /* Space for mobile nav */
             -webkit-font-smoothing: antialiased;
         }
-
-        /* Ultra Premium Text Effects */
         .elite-gradient-text {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-gold));
             -webkit-background-clip: text;
@@ -47,7 +41,6 @@
             animation: eliteGradientFlow 8s ease infinite;
             text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
         }
-
         @keyframes eliteGradientFlow {
             0% { background-position: 0% 50%; }
             25% { background-position: 100% 50%; }
@@ -55,8 +48,6 @@
             75% { background-position: 0% 50%; }
             100% { background-position: 50% 0%; }
         }
-
-        /* Floating particles animation */
         .particles {
             position: absolute;
             width: 100%;
@@ -64,32 +55,24 @@
             overflow: hidden;
             pointer-events: none;
         }
-
         .particle {
             position: absolute;
             background: rgba(6, 182, 212, 0.1);
             border-radius: 50%;
             animation: float 20s infinite linear;
         }
-
         @keyframes float {
             0% {
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             100% {
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
             }
         }
-
-        /* World-Class Card Design */
         .elite-card {
             background: var(--glass-bg);
             backdrop-filter: blur(24px);
@@ -103,7 +86,6 @@
             cursor: pointer;
             position: relative;
         }
-
         .elite-card::before {
             content: '';
             position: absolute;
@@ -116,18 +98,14 @@
             transition: opacity 0.6s ease;
             z-index: 1;
         }
-
         .elite-card:hover {
             transform: translateY(-15px) scale(1.02);
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
             border-color: rgba(6, 182, 212, 0.5);
         }
-
         .elite-card:hover::before {
             opacity: 1;
         }
-
-        /* Perfect Book Display */
         .book-display {
             position: relative;
             overflow: hidden;
@@ -135,26 +113,17 @@
             transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-
         .book-display img {
             transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
         }
-
         .elite-card:hover .book-display img {
             transform: scale(1.1);
         }
-
-        /* Sophisticated Grid System */
         .elite-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
         }
-
-        /* Premium Search Experience */
         .elite-search {
             background: rgba(15, 23, 42, 0.6);
             border: 2px solid rgba(6, 182, 212, 0.3);
@@ -162,14 +131,12 @@
             border-radius: 50px !important;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-
         .elite-search:focus-within {
             background: rgba(15, 23, 42, 0.8);
             border-color: var(--accent-blue);
             box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2), 0 15px 40px rgba(0, 0, 0, 0.3);
             transform: translateY(-2px);
         }
-
         .elite-search input {
             background: transparent !important;
             border: none !important;
@@ -178,12 +145,9 @@
             color: white !important;
             font-size: 1.1rem;
         }
-
         .elite-search input::placeholder {
             color: rgba(255, 255, 255, 0.6);
         }
-
-        /* World-Class Buttons */
         .btn-elite {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-gold));
             border: none;
@@ -197,12 +161,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
         .btn-elite::before {
             content: '';
             position: absolute;
@@ -213,18 +172,14 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s ease;
         }
-
         .btn-elite:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4);
             color: white;
         }
-
         .btn-elite:hover::before {
             left: 100%;
         }
-
-        /* Perfect Modal Design */
         .elite-modal .modal-content {
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.98));
             backdrop-filter: blur(40px);
@@ -233,8 +188,6 @@
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
         }
-
-        /* Progress Bar for Downloads */
         .download-progress {
             height: 4px;
             background: rgba(255, 255, 255, 0.1);
@@ -243,7 +196,6 @@
             margin-top: 1rem;
             display: none;
         }
-
         .download-progress-bar {
             height: 100%;
             background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
@@ -251,8 +203,6 @@
             transition: width 0.3s ease;
             border-radius: 2px;
         }
-
-        /* Success notification */
         .success-notification {
             position: fixed;
             top: 20px;
@@ -267,28 +217,16 @@
             z-index: 9999;
             backdrop-filter: blur(10px);
         }
-
         .success-notification.show {
             transform: translateX(0);
         }
-
-        /* Category Filter Pills */
         .category-pills {
             display: flex;
             gap: 1rem;
-            flex-wrap: nowrap;
-            justify-content: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-bottom: 2rem;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
         }
-
-        .category-pills::-webkit-scrollbar {
-            display: none;
-        }
-
         .category-pill {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -298,10 +236,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
-            white-space: nowrap;
-            flex-shrink: 0;
         }
-
         .category-pill:hover,
         .category-pill.active {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
@@ -309,20 +244,15 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
         }
-
-        /* Enhanced Rating Display */
         .rating-display {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
         .star {
             color: var(--accent-gold);
             font-size: 0.9rem;
         }
-
-        /* Loading Spinner */
         .loading-spinner {
             border: 3px solid rgba(255, 255, 255, 0.1);
             border-top: 3px solid var(--accent-blue);
@@ -331,109 +261,63 @@
             height: 20px;
             animation: spin 1s linear infinite;
         }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        /* Responsive Design */
         @media (max-width: 1200px) {
             .elite-grid {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-                gap: 1.5rem;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 2rem;
             }
         }
-
         @media (max-width: 992px) {
             .elite-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 1.2rem;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
             }
-            
             .category-pills {
-                gap: 0.7rem;
-            }
-            
-            .elite-modal .modal-content {
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            
-            .elite-modal .row {
-                flex-direction: column;
-            }
-            
-            .elite-modal .book-display img {
-                max-height: 300px;
+                gap: 0.5rem;
             }
         }
-
         @media (max-width: 768px) {
             .elite-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 1rem;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 1.2rem;
             }
-            
             .hero-title {
-                font-size: 2.2rem !important;
+                font-size: 2.5rem !important;
             }
-            
             .category-pill {
-                padding: 0.4rem 1.2rem;
+                padding: 0.4rem 1rem;
                 font-size: 0.9rem;
             }
-            
-            .book-display img {
-                height: 160px;
-            }
         }
-
         @media (max-width: 576px) {
             .elite-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-                gap: 0.8rem;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
             }
-            
             .elite-search {
                 padding: 0.75rem 1rem;
             }
-            
-            .hero-title {
-                font-size: 1.8rem !important;
-            }
-            
-            .lead {
-                font-size: 1.1rem !important;
-            }
-            
-            .book-display img {
-                height: 140px;
-            }
         }
-
-        /* Perfect Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
         }
-
         ::-webkit-scrollbar-track {
             background: rgba(15, 23, 42, 0.4);
             border-radius: 5px;
         }
-
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(var(--accent-blue), var(--accent-purple));
             border-radius: 5px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(var(--accent-purple), var(--accent-gold));
         }
-
-        /* Animations */
         @keyframes slideInUp {
             from {
                 opacity: 0;
@@ -444,12 +328,9 @@
                 transform: translateY(0);
             }
         }
-
         .slide-in-up {
             animation: slideInUp 0.6s ease forwards;
         }
-
-        /* Statistics Section */
         .stats-section {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -458,11 +339,9 @@
             margin: 2rem 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .stat-item {
             text-align: center;
         }
-
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
@@ -471,130 +350,47 @@
             background-clip: text;
             color: transparent;
         }
-
         .stat-label {
             color: rgba(255, 255, 255, 0.8);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        /* Added for better text readability */
         .book-description {
             color: rgba(255, 255, 255, 0.7) !important;
         }
-
-        /* ========== MOBILE OPTIMIZATION ========== */
-        /* Mobile Navigation */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-top: 1px solid var(--glass-border);
+        /* Modern Pagination Styling */
+        .pagination {
+            background: var(--glass-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(6,182,212,0.08);
+            padding: 0.5rem 1.5rem;
+            display: inline-flex;
         }
-        
-        .mobile-nav-items {
-            display: flex;
-            justify-content: space-around;
-            padding: 0.8rem 0;
+        .pagination .page-item {
+            margin: 0 0.2rem;
         }
-        
-        .mobile-nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.7rem;
-            transition: all 0.3s ease;
-            padding: 0.5rem;
-        }
-        
-        .mobile-nav-item.active {
+        .pagination .page-link {
             color: var(--accent-blue);
-        }
-        
-        .mobile-nav-item i {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        /* Mobile Search */
-        .mobile-search-btn {
-            display: none;
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: white;
-            z-index: 999;
-            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-        
-        /* Mobile Search Bar */
-        .mobile-search-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1001;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 1rem;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .mobile-search-container.visible {
-            transform: translateY(0);
-        }
-        
-        .close-search {
-            position: absolute;
-            right: 1rem;
-            top: 1.2rem;
-            color: white;
-            font-size: 1.2rem;
-            background: none;
+            background: transparent;
             border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
         }
-        
-        /* Touch Optimization */
-        .btn, .category-pill, .elite-card {
-            touch-action: manipulation;
+        .pagination .page-item.active .page-link,
+        .pagination .page-link:hover {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(139,92,246,0.15);
         }
-        
-        .btn {
-            min-height: 44px;
-        }
-        
-        /* Show mobile nav on mobile devices */
-        @media (max-width: 768px) {
-            .mobile-nav {
-                display: block;
-            }
-            
-            .mobile-search-btn {
-                display: flex;
-            }
-            
-            .stats-section .row {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
+        .pagination .page-item.disabled .page-link {
+            color: #888;
+            background: none;
+            cursor: not-allowed;
+            opacity: 0.5;
         }
     </style>
-    <script type='text/javascript' src='//pl27243213.profitableratecpm.com/59/e7/a2/59e7a22348897e6670891e3354f0f15f.js'></script>
 </head>
 <body>
     <!-- Floating Particles Background -->
@@ -606,21 +402,7 @@
         <span id="notificationMessage">Berhasil!</span>
     </div>
 
-    <!-- Mobile Search Container -->
-    <div class="mobile-search-container" id="mobileSearchContainer">
-        <div class="elite-search w-100">
-            <div class="input-group input-group-lg">
-                <span class="input-group-text bg-transparent border-0 text-white ps-4">
-                    <i class="fas fa-search"></i>
-                </span>
-                <input type="text" id="mobileFilterInput" class="form-control bg-transparent border-0 text-white py-3" 
-                       placeholder="Cari buku...">
-                <button class="close-search" onclick="hideMobileSearch()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- Mobile Search Container dihapus -->
 
     <!-- World-Class Hero Section -->
     <section id="hero" class="min-vh-100 d-flex align-items-center position-relative overflow-hidden py-5">
@@ -702,6 +484,7 @@
             <div class="elite-grid mt-5 px-3" id="bookGrid">
                 <!-- Books will be loaded here -->
             </div>
+            <div id="paginationContainer" class="mt-4"></div>
         </div>
     </section>
 
@@ -751,32 +534,7 @@
         </div>
     </div>
 
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav">
-        <div class="mobile-nav-items">
-            <div class="mobile-nav-item active" onclick="scrollToSection('hero')">
-                <i class="fas fa-home"></i>
-                <span>Beranda</span>
-            </div>
-            <div class="mobile-nav-item" onclick="scrollToSection('booksSection')">
-                <i class="fas fa-book"></i>
-                <span>Buku</span>
-            </div>
-            <div class="mobile-nav-item" onclick="showMobileSearch()">
-                <i class="fas fa-search"></i>
-                <span>Cari</span>
-            </div>
-            <div class="mobile-nav-item" id="mobileFavoritesBtn" onclick="showFavorites()">
-                <i class="fas fa-heart"></i>
-                <span>Favorit</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Mobile Search Button -->
-    <div class="mobile-search-btn" onclick="showMobileSearch()">
-        <i class="fas fa-search"></i>
-    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -2083,37 +1841,7 @@
                 file: "https://drive.google.com/uc?export=download&id=1zuPbotufNN1i6zII48VYIfznNu_txhxJ"
             }
         ];
-        // Fungsi tampil buku
-function renderBooks(books) {
-    const bookGrid = document.getElementById('bookGrid');
-    bookGrid.innerHTML = '';
-    books.forEach(book => {
-        const card = document.createElement('div');
-        card.className = 'elite-card p-3';
-        card.innerHTML = `
-            <div class="book-display mb-3">
-                <img src="${book.cover}" alt="${book.title}" />
-            </div>
-            <h5 class="fw-bold mb-2">${book.title}</h5>
-            <p class="text-muted small mb-2">${book.author}</p>
-            <div class="mb-3">${book.category}</div>
-            <div class="d-flex gap-2">
-                <button class="btn btn-elite flex-grow-1" onclick="openDetail(${book.id})">Detail</button>
-            </div>
-        `;
-        bookGrid.appendChild(card);
-    });
-}
-
-// Fungsi tombol Detail
-function openDetail(id) {
-    // Untuk id=1 ke Buku1.html, id=2 ke Buku2.html, dst.
-    window.location.href = `Buku${id}.html`;
-}
-
-// Panggil fungsi saat halaman dimuat
-renderBooks(eliteBooks);
-</script>
+        
         // Otomatis isi category berdasarkan title
         eliteBooks.forEach(book => {
             const title = (book.title || '').toLowerCase();
@@ -2153,8 +1881,7 @@ renderBooks(eliteBooks);
         const bookModal = new bootstrap.Modal(document.getElementById('bookModal'));
         const successNotification = document.getElementById('successNotification');
         const notificationMessage = document.getElementById('notificationMessage');
-        const mobileSearchContainer = document.getElementById('mobileSearchContainer');
-        const mobileFilterInput = document.getElementById('mobileFilterInput');
+        // Mobile search container dan input dihapus
 
         // Initialize Application
         document.addEventListener('DOMContentLoaded', function() {
@@ -2198,7 +1925,7 @@ renderBooks(eliteBooks);
 
             // Filter functionality
             filterInput.addEventListener('input', debounce(handleFilter, 300));
-            mobileFilterInput.addEventListener('input', debounce(handleFilter, 300));
+            // Event listener mobileFilterInput dihapus
 
             // Category pills
             categoryPills.addEventListener('click', (e) => {
@@ -2227,7 +1954,7 @@ renderBooks(eliteBooks);
 
         // Handle Filter
         function handleFilter() {
-            searchTerm = filterInput.value.toLowerCase().trim() || mobileFilterInput.value.toLowerCase().trim();
+            searchTerm = filterInput.value.toLowerCase().trim();
             renderBooks(getFilteredBooks());
         }
 
@@ -2268,8 +1995,11 @@ renderBooks(eliteBooks);
         }
 
         // Render Books
+        let currentPage = 1;
+        const booksPerPage = 12;
         function renderBooks(booksToRender) {
             bookGrid.innerHTML = '';
+            const paginationContainer = document.getElementById('paginationContainer');
             if (!Array.isArray(booksToRender) || booksToRender.length === 0) {
                 bookGrid.innerHTML = `
                     <div class="col-12 text-center py-5">
@@ -2281,9 +2011,17 @@ renderBooks(eliteBooks);
                         </button>
                     </div>
                 `;
+                if (paginationContainer) paginationContainer.innerHTML = '';
                 return;
             }
-            booksToRender.forEach((book, index) => {
+            // Pagination logic
+            const totalPages = Math.ceil(booksToRender.length / booksPerPage);
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+            const startIdx = (currentPage - 1) * booksPerPage;
+            const endIdx = startIdx + booksPerPage;
+            const booksToShow = booksToRender.slice(startIdx, endIdx);
+            booksToShow.forEach((book, index) => {
                 const bookItem = document.createElement('div');
                 bookItem.className = 'elite-grid-item';
                 const isFavorite = favorites.includes(book.id);
@@ -2313,7 +2051,7 @@ renderBooks(eliteBooks);
                                 <button class="btn btn-elite btn-sm rounded-pill flex-grow-1" onclick="openBookModal(${book.id})">
                                     <i class="fas fa-eye me-1"></i> Detail
                                 </button>
-                                <button class="btn ${isFavorite ? 'btn-warning' : 'btn-outline-warning'} btn-sm rounded-pill px-3" onclick="toggleFavorite(${book.id})">
+                                <button class="btn ${isFavorite ? 'btn-warning' : 'btn-outline-warning'} btn-sm rounded-pill px-3" onclick="window.toggleFavorite(${book.id})">
                                     <i class="fas fa-heart"></i>
                                 </button>
                             </div>
@@ -2327,7 +2065,30 @@ renderBooks(eliteBooks);
                 });
                 bookGrid.appendChild(bookItem);
             });
+            // Render pagination controls
+            if (paginationContainer) {
+                let html = '';
+                if (totalPages > 1) {
+                    html += `<nav aria-label='Book pagination'><ul class='pagination justify-content-center'>`;
+                    html += `<li class='page-item${currentPage === 1 ? ' disabled' : ''}'><a class='page-link' href='#' onclick='window.changePage(${currentPage - 1});return false;'>&laquo;</a></li>`;
+                    for (let i = 1; i <= totalPages; i++) {
+                        html += `<li class='page-item${i === currentPage ? ' active' : ''}'><a class='page-link' href='#' onclick='window.changePage(${i});return false;'>${i}</a></li>`;
+                    }
+                    html += `<li class='page-item${currentPage === totalPages ? ' disabled' : ''}'><a class='page-link' href='#' onclick='window.changePage(${currentPage + 1});return false;'>&raquo;</a></li>`;
+                    html += `</ul></nav>`;
+                }
+                paginationContainer.innerHTML = html;
+            }
         }
+
+        // Fungsi global agar bisa dipanggil dari HTML
+        window.changePage = function(page) {
+            currentPage = page;
+            renderBooks(getFilteredBooks());
+        };
+        window.toggleFavorite = function(bookId) {
+            toggleFavorite(bookId);
+        };
 
         // Open Book Modal
         function openBookModal(bookId) {
@@ -2456,7 +2217,7 @@ renderBooks(eliteBooks);
             currentFilter = 'all';
             searchTerm = '';
             filterInput.value = '';
-            mobileFilterInput.value = '';
+            // mobileFilterInput.value dihapus
             updateActiveCategory();
             renderBooks(eliteBooks);
         }
@@ -2546,14 +2307,402 @@ renderBooks(eliteBooks);
             }
         });
 
-        // Close mobile search when clicking outside
-        document.addEventListener('click', (e) => {
-            if (mobileSearchContainer.classList.contains('visible') && 
-                !mobileSearchContainer.contains(e.target) &&
-                !document.querySelector('.mobile-search-btn').contains(e.target)) {
-                hideMobileSearch();
-            }
-        });
+        // Event listener mobile search dihapus karena elemen sudah tidak ada
+
+        // Fungsi scrollToSection agar tidak error pada onclick
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Fungsi showFavorites agar tidak error pada onclick
+        function showFavorites() {
+            showNotification('Fitur Favorit belum tersedia.');
+        }
     </script>
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --primary-light: #f8fafc;
+            --accent-blue: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-gold: #f59e0b;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1e293b 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        .elite-gradient-text {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 400% 400%;
+            animation: eliteGradientFlow 8s ease infinite;
+            text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+        }
+        @keyframes eliteGradientFlow {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 0% 50%; }
+            100% { background-position: 50% 0%; }
+        }
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .elite-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(0);
+            cursor: pointer;
+            position: relative;
+        }
+        .elite-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+        }
+        .elite-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+            border-color: rgba(6, 182, 212, 0.5);
+        }
+        .elite-card:hover::before {
+            opacity: 1;
+        }
+        .book-display {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .book-display img {
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .elite-card:hover .book-display img {
+            transform: scale(1.1);
+        }
+        .elite-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        .elite-search {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 50px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .elite-search:focus-within {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2), 0 15px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        .elite-search input {
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            color: white !important;
+            font-size: 1.1rem;
+        }
+        .elite-search input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .btn-elite {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-gold));
+            border: none;
+            background-size: 300% 300%;
+            animation: eliteGradientFlow 10s ease infinite;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+        .btn-elite::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-elite:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4);
+            color: white;
+        }
+        .btn-elite:hover::before {
+            left: 100%;
+        }
+        .elite-modal .modal-content {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.98));
+            backdrop-filter: blur(40px);
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        .download-progress {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 1rem;
+            display: none;
+        }
+        .download-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .success-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            transform: translateX(400px);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+        .success-notification.show {
+            transform: translateX(0);
+        }
+        .category-pills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .category-pill {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .category-pill:hover,
+        .category-pill.active {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+        }
+        .rating-display {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .star {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--accent-blue);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @media (max-width: 1200px) {
+            .elite-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+        }
+        @media (max-width: 992px) {
+            .elite-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+            .category-pills {
+                gap: 0.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .elite-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 1.2rem;
+            }
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            .category-pill {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .elite-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            .elite-search {
+                padding: 0.75rem 1rem;
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--accent-blue), var(--accent-purple));
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--accent-purple), var(--accent-gold));
+        }
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .slide-in-up {
+            animation: slideInUp 0.6s ease forwards;
+        }
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .book-description {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+        /* Modern Pagination Styling */
+        .pagination {
+            background: var(--glass-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(6,182,212,0.08);
+            padding: 0.5rem 1.5rem;
+            display: inline-flex;
+        }
+        .pagination .page-item {
+            margin: 0 0.2rem;
+        }
+        .pagination .page-link {
+            color: var(--accent-blue);
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+        }
+        .pagination .page-item.active .page-link,
+        .pagination .page-link:hover {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(139,92,246,0.15);
+        }
+        .pagination .page-item.disabled .page-link {
+            color: #888;
+            background: none;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    </style>
 </body>
 </html>
