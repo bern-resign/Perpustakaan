@@ -4,10 +4,372 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mengelola Stres Harian | DigiLib Pro</title>
-    <meta name="description" content="Prinsip dasar dan implementasi jaringan komputer untuk berbagai skala.">
+    <meta name="description" content="Buku ini mengupas strategi praktis untuk mengelola stres harian, menyajikan teknik efektif untuk mengidentifikasi pemicu dan meningkatkan ketahanan mental.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-    <!-- Same CSS as previous files -->
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(ellipse at top, #0f0f23 0%, #020617 50%, #000000 100%);
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Glass morphism container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.3),
+                0 0 0 1px rgba(255,255,255,0.05),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Premium gradient text with animation */
+        .title {
+            background: linear-gradient(135deg, #00d4ff 0%, #9333ea 25%, #f59e0b 50%, #ef4444 75%, #06b6d4 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: gradientShift 3s ease-in-out infinite;
+            letter-spacing: -0.02em;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating book cover with 3D effect */
+        .book-container {
+            perspective: 1000px;
+            margin: 2rem auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-cover {
+            width: 280px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 
+                0 30px 60px rgba(6,182,212,0.15),
+                0 15px 30px rgba(139,92,246,0.1),
+                0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
+            transform: rotateY(-5deg) rotateX(5deg);
+            animation: bookFloat 4s ease-in-out infinite;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(6,182,212,0.1) 0%, rgba(139,92,246,0.1) 100%);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+            box-shadow: 
+                0 40px 80px rgba(6,182,212,0.25),
+                0 20px 40px rgba(139,92,246,0.15),
+                0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .book-cover:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes bookFloat {
+            0%, 100% { transform: rotateY(-5deg) rotateX(5deg) translateY(0px); }
+            50% { transform: rotateY(-5deg) rotateX(5deg) translateY(-10px); }
+        }
+
+        /* Author with golden effect */
+        .author {
+            display: block;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Enhanced description */
+        .desc {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Premium info cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 2.5rem 0;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(6,182,212,0.1) 0%, rgba(139,92,246,0.1) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6,182,212,0.3);
+            box-shadow: 0 15px 30px rgba(6,182,212,0.1);
+        }
+
+        .info-card:hover::before {
+            left: 100%;
+        }
+
+        .info-card .label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .info-card .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Star rating with animation */
+        .rating-container {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .stars {
+            display: inline-flex;
+            gap: 2px;
+            margin-right: 0.5rem;
+        }
+
+        .star {
+            color: #f59e0b;
+            font-size: 1.4rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .star:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px #f59e0b);
+        }
+
+        .rating-text {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Ultra premium download button */
+        .download-container {
+            text-align: center;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 25%, #f59e0b 50%, #ef4444 75%, #06b6d4 100%);
+            background-size: 300% 300%;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 15px 30px rgba(6,182,212,0.2),
+                0 5px 15px rgba(139,92,246,0.1);
+            animation: buttonGlow 3s ease-in-out infinite;
+        }
+
+        .btn-download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(6,182,212,0.3),
+                0 10px 25px rgba(139,92,246,0.2);
+        }
+
+        .btn-download:hover::before {
+            left: 100%;
+        }
+
+        .btn-download:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        @keyframes buttonGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .download-icon {
+            margin-right: 0.8rem;
+            font-size: 1.4rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .book-cover {
+                width: 240px;
+                height: 300px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            
+            .btn-download {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-cover {
+                width: 200px;
+                height: 250px;
+            }
+        }
 </style>
 </head>
 <body>
@@ -21,7 +383,7 @@
                  class="book-cover" />
         </div>
         <div class="desc">
-            Prinsip dasar dan implementasi jaringan komputer untuk berbagai skala.
+            Buku ini mengupas strategi praktis untuk mengelola stres harian, menyajikan teknik efektif untuk mengidentifikasi pemicu dan meningkatkan ketahanan mental.
         </div>
         <!-- Same info-grid as previous file -->
         <div class="download-container">
@@ -33,6 +395,72 @@
             </a>
         </div>
     </div>
-    <!-- Same JavaScript as previous file -->
+// Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay and duration
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Add mouse move effect to book cover
+        function addMouseEffect() {
+            const bookCover = document.querySelector('.book-cover');
+            const container = document.querySelector('.container');
+            
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                
+                const rotateX = (y - 0.5) * 10;
+                const rotateY = (x - 0.5) * -10;
+                
+                bookCover.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                bookCover.style.transform = 'rotateX(5deg) rotateY(-5deg) scale(1)';
+            });
+        }
+
+        // Add click animation to stars
+        function addStarInteraction() {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                star.addEventListener('click', () => {
+                    stars.forEach((s, i) => {
+                        if (i <= index) {
+                            s.textContent = '★';
+                            s.style.color = '#f59e0b';
+                        } else {
+                            s.textContent = '☆';
+                            s.style.color = '#6b7280';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            addMouseEffect();
+            addStarInteraction();
+        });
+
+
 </body>
 </html>
