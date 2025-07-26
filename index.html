@@ -2039,7 +2039,7 @@
                         </div>
                         <div class="p-3 position-relative" style="z-index: 2;">
                             <h5 class="mb-2 fw-bold" style="font-size: 0.95rem;">${book.title || ''}</h5>
-                            <p class="text-muted small mb-2">oleh ${book.author || 'Penulis Tidak Diketahui'}</p>
+                            <p class="text-muted small mb-2" style="color: #fff;">oleh ${book.author || 'Penulis Tidak Diketahui'}</p>
                             <div class="d-flex justify-content-between align-items-center mt-3">
                                 <div class="rating-display">
                                     ${'<i class="fas fa-star star"></i>'.repeat(Math.floor(book.rating || 0))}
@@ -2048,7 +2048,7 @@
                                 </div>
                             </div>
                             <div class="d-flex gap-2 mt-2">
-                                <button class="btn btn-elite btn-sm rounded-pill flex-grow-1" onclick="openBookModal(${book.id})">
+                                <button class="btn btn-elite btn-sm rounded-pill flex-grow-1" onclick="window.location.href='buku'+${book.id}+'.html'">
                                     <i class="fas fa-eye me-1"></i> Detail
                                 </button>
                                 <button class="btn ${isFavorite ? 'btn-warning' : 'btn-outline-warning'} btn-sm rounded-pill px-3" onclick="window.toggleFavorite(${book.id})">
@@ -2095,7 +2095,7 @@
             const book = eliteBooks.find(b => b.id === bookId);
             if (!book) return;
             document.getElementById('modalBookTitle').textContent = book.title || '';
-            document.getElementById('modalBookAuthor').textContent = book.author ? `oleh ${book.author}` : '';
+            document.getElementById('modalBookAuthor').innerHTML = book.author ? `<span style='color:#fff'>oleh ${book.author}</span>` : '';
             document.getElementById('modalBookDesc').textContent = book.desc || '';
             const coverSrc = book.cover || '/logo512.png';
             document.getElementById('modalBookCover').src = coverSrc;
