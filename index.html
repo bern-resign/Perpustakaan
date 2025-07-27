@@ -390,6 +390,317 @@
             cursor: not-allowed;
             opacity: 0.5;
         }
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; transform: translateY(90vh) rotate(36deg) scale(1); }
+            90% { opacity: 1; transform: translateY(-10vh) rotate(324deg) scale(1); }
+            100% {
+                transform: translateY(-20vh) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            padding: 4rem 2rem 3rem;
+        }
+
+        /* Brand Section */
+        .footer-brand {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .footer-logo {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            display: block;
+            letter-spacing: -2px;
+            position: relative;
+        }
+
+        .footer-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-gold));
+            border-radius: 2px;
+            animation: logoUnderline 3s ease-in-out infinite;
+        }
+
+        @keyframes logoUnderline {
+            0%, 100% { width: 60px; }
+            50% { width: 120px; }
+        }
+
+        .footer-tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .footer-tagline::before,
+        .footer-tagline::after {
+            content: '◆';
+            color: var(--accent-blue);
+            margin: 0 1rem;
+            font-size: 0.8rem;
+            animation: sparkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Advanced Link Cards */
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .footer-link-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            transform-origin: center;
+        }
+
+        .footer-link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(6, 182, 212, 0.1), 
+                rgba(139, 92, 246, 0.1),
+                rgba(245, 158, 11, 0.1));
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+        }
+
+        .footer-link-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(6, 182, 212, 0.3), transparent);
+            opacity: 0;
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+
+        .footer-link-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(6, 182, 212, 0.2),
+                0 0 30px rgba(139, 92, 246, 0.1);
+            border-color: rgba(6, 182, 212, 0.5);
+        }
+
+        .footer-link-card:hover::before {
+            opacity: 1;
+        }
+
+        .footer-link-card:hover::after {
+            opacity: 1;
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-link-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-link-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .footer-link-card:hover .footer-link-icon {
+            transform: scale(1.2) rotate(15deg);
+            box-shadow: 0 15px 30px rgba(6, 182, 212, 0.5);
+        }
+
+        .footer-link-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link-card:hover .footer-link-title {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-link-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link-card:hover .footer-link-desc {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animated Bottom Section */
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .footer-bottom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { width: 100px; opacity: 0.5; }
+            50% { width: 200px; opacity: 1; }
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            font-weight: 300;
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 992px) {
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                padding: 3rem 1rem 2rem;
+            }
+
+            .footer-logo {
+                font-size: 2.5rem;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .footer-link-card {
+                padding: 1.5rem;
+            }
+
+            .footer-link-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-logo {
+                font-size: 2rem;
+            }
+
+            .footer-tagline {
+                font-size: 0.9rem;
+            }
+
+            .footer-link-card {
+                padding: 1.2rem;
+            }
+        }
+
+        /* Advanced Loading Animation */
+        @keyframes footerEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .footer-entrance {
+            animation: footerEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Staggered animation for cards */
+        .footer-link-card:nth-child(1) { animation-delay: 0.1s; }
+        .footer-link-card:nth-child(2) { animation-delay: 0.2s; }
+        .footer-link-card:nth-child(3) { animation-delay: 0.3s; }
+        .footer-link-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .card-entrance {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: footerEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
 </head>
 <body>
@@ -2319,6 +2630,154 @@
         function showFavorites() {
             showNotification('Fitur Favorit belum tersedia.');
         }
+
+        // Create advanced floating particles
+        function createAdvancedParticles() {
+            const particlesContainer = document.getElementById('footerParticles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'footer-particle';
+                
+                const size = Math.random() * 6 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                
+                const animationDuration = Math.random() * 8 + 8;
+                const animationDelay = Math.random() * 12;
+                
+                particle.style.animationDelay = animationDelay + 's';
+                particle.style.animationDuration = animationDuration + 's';
+                
+                // Random colors
+                const colors = [
+                    'rgba(6, 182, 212, 0.6)',
+                    'rgba(139, 92, 246, 0.6)',
+                    'rgba(245, 158, 11, 0.6)'
+                ];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = `radial-gradient(circle, ${randomColor}, transparent)`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Advanced intersection observer for animations
+        function initAdvancedAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('footer-entrance');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe footer elements
+            document.querySelectorAll('.footer-brand, .footer-link-card, .footer-bottom').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Enhanced card interactions
+        function initCardInteractions() {
+            document.querySelectorAll('.footer-link-card').forEach((card, index) => {
+                // Add staggered hover effects
+                card.addEventListener('mouseenter', function() {
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(6, 182, 212, 0.3);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        z-index: 0;
+                        pointer-events: none;
+                    `;
+                    
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        if (ripple.parentNode) {
+                            ripple.parentNode.removeChild(ripple);
+                        }
+                    }, 600);
+                });
+
+                // Add click interaction
+                card.addEventListener('click', function() {
+                    // Flash effect
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        }
+
+        // Dynamic background gradient
+        function initDynamicBackground() {
+            let angle = 0;
+            setInterval(() => {
+                angle += 0.5;
+                const footer = document.querySelector('.elite-footer');
+                if (footer) {
+                    footer.style.setProperty('--gradient-angle', angle + 'deg');
+                }
+            }, 100);
+        }
+
+        // Initialize all advanced features
+        document.addEventListener('DOMContentLoaded', function() {
+            createAdvancedParticles();
+            initAdvancedAnimations();
+            initCardInteractions();
+            initDynamicBackground();
+
+            // Add CSS for ripple effect
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: translate(-50%, -50%) scale(2);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Smooth parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const footer = document.querySelector('.elite-footer');
+            const particles = document.querySelectorAll('.footer-particle');
+            
+            if (footer) {
+                const rate = scrolled * -0.5;
+                footer.style.transform = `translateY(${rate}px)`;
+            }
+            
+            particles.forEach((particle, index) => {
+                const rate = (scrolled * (0.2 + index * 0.1));
+                particle.style.transform = `translateY(${rate}px)`;
+            });
+        });
+
     </script>
     <style>
         :root {
@@ -2704,5 +3163,77 @@
             opacity: 0.5;
         }
     </style>
+     <div class="container">
+        <div class="text-center py-5">
+            <h1 class="elite-gradient-text">Elite Website</h1>
+            <p class="text-white-50">Advanced footer with sophisticated animations</p>
+        </div>
+    </div>
+
+    <!-- Advanced Elite Footer -->
+    <footer class="elite-footer">
+        <!-- Floating Particles -->
+        <div class="footer-particles" id="footerParticles"></div>
+        
+        <div class="footer-content">
+            <div class="container">
+                <!-- Enhanced Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo elite-gradient-text">EliteLibrary</div>
+                    <p class="footer-tagline">Premium Digital Experience</p>
+                </div>
+
+                <!-- Advanced Link Cards -->
+                <div class="footer-links">
+                    <div class="footer-link-card card-entrance">
+                        <div class="footer-link-content">
+                            <div class="footer-link-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <h4 class="footer-link-title">About Us</h4>
+                            <p class="footer-link-desc">Discover our mission, vision, and the story behind our premium digital library platform.</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-link-card card-entrance">
+                        <div class="footer-link-content">
+                            <div class="footer-link-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="footer-link-title">Privacy Policy</h4>
+                            <p class="footer-link-desc">Learn how we protect and handle your personal information with complete transparency.</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-link-card card-entrance">
+                        <div class="footer-link-content">
+                            <div class="footer-link-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <h4 class="footer-link-title">Terms of Service</h4>
+                            <p class="footer-link-desc">Review our terms and conditions for using our premium digital library services.</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-link-card card-entrance">
+                        <div class="footer-link-content">
+                            <div class="footer-link-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4 class="footer-link-title">Contact</h4>
+                            <p class="footer-link-desc">Get in touch with our support team for any questions or assistance you may need.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Bottom Section -->
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        © 2025 EliteLibrary. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
