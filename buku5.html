@@ -7,72 +7,594 @@
     <meta name="description" content="Prinsip-prinsip dan penjelasan ilmiah tentang intermittent fasting, manfaat dan risikonya.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ...Style sama seperti buku1.html... */
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { background: radial-gradient(ellipse at top, #0f0f23 0%, #020617 50%, #000000 100%); font-family: 'Inter', sans-serif; color:#fff; min-height:100vh; overflow-x:hidden; position:relative; }
-        .particles { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
-        .particle { position:absolute; width:2px; height:2px; background:linear-gradient(45deg,#06b6d4,#8b5cf6); border-radius:50%; animation:float 6s ease-in-out infinite; opacity:0.7; }
-        @keyframes float { 0%,100%{transform:translateY(0px) rotate(0deg); opacity:0.7;} 50%{transform:translateY(-20px) rotate(180deg); opacity:1;} }
-        .container { position:relative; z-index:10; max-width:700px; margin:2rem auto; background:rgba(255,255,255,0.03); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.08); box-shadow:0 25px 50px rgba(0,0,0,0.3),0 0 0 1px rgba(255,255,255,0.05),inset 0 1px 0 rgba(255,255,255,0.1); border-radius:24px; padding:3rem 2.5rem; animation:slideIn 1s ease-out;}
-        @keyframes slideIn { from{opacity:0;transform:translateY(50px);} to{opacity:1;transform:translateY(0);} }
-        .title { background:linear-gradient(135deg,#00d4ff 0%,#9333ea 25%,#f59e0b 50%,#ef4444 75%,#06b6d4 100%); background-size:300% 300%; -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:900; font-size:clamp(1.8rem,4vw,2.8rem); text-align:center; margin-bottom:1.5rem; line-height:1.2; animation:gradientShift 3s ease-in-out infinite; letter-spacing:-0.02em;}
-        @keyframes gradientShift { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
-        .book-container { perspective:1000px; margin:2rem auto; display:flex; justify-content:center; }
-        .book-cover { width:280px; height:350px; object-fit:cover; border-radius:20px; box-shadow:0 30px 60px rgba(6,182,212,0.15),0 15px 30px rgba(139,92,246,0.1),0 5px 15px rgba(0,0,0,0.2); transition:all 0.6s cubic-bezier(0.23,1,0.32,1); transform:rotateY(-5deg) rotateX(5deg); animation:bookFloat 4s ease-in-out infinite; cursor:pointer; position:relative; }
-        .book-cover::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(135deg,rgba(6,182,212,0.1) 0%,rgba(139,92,246,0.1) 100%); border-radius:20px; opacity:0; transition:opacity 0.3s ease; }
-        .book-cover:hover { transform:rotateY(0deg) rotateX(0deg) scale(1.05); box-shadow:0 40px 80px rgba(6,182,212,0.25),0 20px 40px rgba(139,92,246,0.15),0 10px 20px rgba(0,0,0,0.3); }
-        .book-cover:hover::before { opacity:1; }
-        @keyframes bookFloat { 0%,100%{transform:rotateY(-5deg) rotateX(5deg) translateY(0px);} 50%{transform:rotateY(-5deg) rotateX(5deg) translateY(-10px);} }
-        .author { display:block; background:linear-gradient(135deg,#ffd700 0%,#ffed4e 50%,#f59e0b 100%); -webkit-background-clip:text; background-clip:text; color:transparent; font-size:1.3rem; font-weight:700; text-align:center; margin-bottom:1.5rem; animation:shimmer 2s ease-in-out infinite; }
-        @keyframes shimmer { 0%,100%{opacity:1;} 50%{opacity:0.8;} }
-        .desc { color:rgba(255,255,255,0.9); font-size:1.2rem; font-weight:400; text-align:center; margin-bottom:2.5rem; line-height:1.6; animation:fadeInUp 1s ease-out 0.5s both;}
-        @keyframes fadeInUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
-        .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin:2.5rem 0; animation:fadeInUp 1s ease-out 0.7s both; }
-        .info-card { background:linear-gradient(135deg,rgba(6,182,212,0.1) 0%,rgba(139,92,246,0.1) 100%); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:1.2rem 1rem; text-align:center; transition:all 0.3s ease; position:relative; overflow:hidden;}
-        .info-card::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent); transition:left 0.6s ease;}
-        .info-card:hover { transform:translateY(-5px); border-color:rgba(6,182,212,0.3); box-shadow:0 15px 30px rgba(6,182,212,0.1);}
-        .info-card:hover::before { left:100%; }
-        .info-card .label { font-size:0.85rem; color:rgba(255,255,255,0.7); margin-bottom:0.5rem; font-weight:500;}
-        .info-card .value { font-size:1.1rem; font-weight:700; color:#fff;}
-        .rating-container { text-align:center; margin:1rem 0; }
-        .stars { display:inline-flex; gap:2px; margin-right:0.5rem; }
-        .star { color:#f59e0b; font-size:1.4rem; transition:all 0.2s ease; cursor:pointer;}
-        .star:hover { transform:scale(1.2); filter:drop-shadow(0 0 8px #f59e0b); }
-        .rating-text { color:rgba(255,255,255,0.9); font-weight:600; font-size:1.1rem;}
-        .download-container { text-align:center; margin-top:3rem; animation:fadeInUp 1s ease-out 1s both;}
-        .btn-download { display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#06b6d4 0%,#8b5cf6 25%,#f59e0b 50%,#ef4444 75%,#06b6d4 100%); background-size:300% 300%; color:#fff; font-size:1.2rem; font-weight:700; border:none; border-radius:50px; padding:1.2rem 3rem; text-decoration:none; position:relative; overflow:hidden; transition:all 0.3s ease; box-shadow:0 15px 30px rgba(6,182,212,0.2),0 5px 15px rgba(139,92,246,0.1); animation:buttonGlow 3s ease-in-out infinite;}
-        .btn-download::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent); transition:left 0.6s ease;}
-        .btn-download:hover { transform:translateY(-3px) scale(1.05); box-shadow:0 25px 50px rgba(6,182,212,0.3),0 10px 25px rgba(139,92,246,0.2);}
-        .btn-download:hover::before { left:100%; }
-        .btn-download:active { transform:translateY(-1px) scale(1.02);}
-        @keyframes buttonGlow { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
-        .download-icon { margin-right:0.8rem; font-size:1.4rem; animation:bounce 2s ease-in-out infinite;}
-        @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-5px);} }
-        @media (max-width: 768px) { .container{margin:1rem;padding:2rem 1.5rem;} .book-cover{width:240px;height:300px;} .info-grid{grid-template-columns:repeat(2,1fr); gap:0.8rem;} .btn-download{padding:1rem 2rem;font-size:1.1rem;} }
-        @media (max-width: 480px) { .info-grid{grid-template-columns:1fr;} .book-cover{width:200px;height:250px;} }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(ellipse at top, #0f0f23 0%, #020617 50%, #000000 100%);
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Glass morphism container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.3),
+                0 0 0 1px rgba(255,255,255,0.05),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Premium gradient text with animation */
+        .title {
+            background: linear-gradient(135deg, #00d4ff 0%, #9333ea 25%, #f59e0b 50%, #ef4444 75%, #06b6d4 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: gradientShift 3s ease-in-out infinite;
+            letter-spacing: -0.02em;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating book cover with 3D effect */
+        .book-container {
+            perspective: 1000px;
+            margin: 2rem auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-cover {
+            width: 280px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 
+                0 30px 60px rgba(6,182,212,0.15),
+                0 15px 30px rgba(139,92,246,0.1),
+                0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
+            transform: rotateY(-5deg) rotateX(5deg);
+            animation: bookFloat 4s ease-in-out infinite;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(6,182,212,0.1) 0%, rgba(139,92,246,0.1) 100%);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+            box-shadow: 
+                0 40px 80px rgba(6,182,212,0.25),
+                0 20px 40px rgba(139,92,246,0.15),
+                0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .book-cover:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes bookFloat {
+            0%, 100% { transform: rotateY(-5deg) rotateX(5deg) translateY(0px); }
+            50% { transform: rotateY(-5deg) rotateX(5deg) translateY(-10px); }
+        }
+
+        /* Author with golden effect */
+        .author {
+            display: block;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Enhanced description */
+        .desc {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Premium info cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 2.5rem 0;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(6,182,212,0.1) 0%, rgba(139,92,246,0.1) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6,182,212,0.3);
+            box-shadow: 0 15px 30px rgba(6,182,212,0.1);
+        }
+
+        .info-card:hover::before {
+            left: 100%;
+        }
+
+        .info-card .label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .info-card .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Star rating with animation */
+        .rating-container {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .stars {
+            display: inline-flex;
+            gap: 2px;
+            margin-right: 0.5rem;
+        }
+
+        .star {
+            color: #f59e0b;
+            font-size: 1.4rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .star:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px #f59e0b);
+        }
+
+        .rating-text {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Button styles */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 25%, #f59e0b 50%, #ef4444 75%, #06b6d4 100%);
+            background-size: 300% 300%;
+            color: #fff;
+            box-shadow: 
+                0 15px 30px rgba(6,182,212,0.2),
+                0 5px 15px rgba(139,92,246,0.1);
+            animation: buttonGlow 3s ease-in-out infinite;
+        }
+
+        .btn-preview {
+            background: linear-gradient(135deg, rgba(6,182,212,0.2) 0%, rgba(139,92,246,0.2) 100%);
+            color: #06b6d4;
+            border: 1px solid rgba(6,182,212,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(5,150,105,0.2) 100%);
+            color: #10b981;
+            border: 1px solid rgba(16,185,129,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-preview:hover {
+            background: linear-gradient(135deg, rgba(6,182,212,0.3) 0%, rgba(139,92,246,0.3) 100%);
+            color: #8b5cf6;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(6,182,212,0.2);
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(135deg, rgba(16,185,129,0.3) 0%, rgba(5,150,105,0.3) 100%);
+            color: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16,185,129,0.2);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(6,182,212,0.3),
+                0 10px 25px rgba(139,92,246,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        @keyframes buttonGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .btn-icon {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .download-icon {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Preview Modal */
+        .preview-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .preview-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .preview-container {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            height: 80vh;
+            background: rgba(30,30,45,0.9);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .preview-overlay.active .preview-container {
+            transform: scale(1);
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .preview-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .preview-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        .preview-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+
+        .btn-close {
+            background: rgba(239,68,68,0.7);
+        }
+
+        .btn-close:hover {
+            background: rgba(239,68,68,0.9);
+        }
+
+        .btn-home-modal {
+            background: rgba(16,185,129,0.7);
+        }
+
+        .btn-home-modal:hover {
+            background: rgba(16,185,129,0.9);
+        }
+
+        .preview-note {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            padding: 0 20px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .book-cover {
+                width: 240px;
+                height: 300px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .preview-container {
+                width: 95%;
+                height: 70vh;
+            }
+
+            .preview-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-cover {
+                width: 200px;
+                height: 250px;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .preview-container {
+                width: 100%;
+                height: 60vh;
+                border-radius: 0;
+            }
+
+            /* Mobile-specific iframe adjustments */
+            .mobile-iframe-fallback {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2000;
+                background: white;
+            }
+            
+            .mobile-iframe-fallback iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+            
+            .mobile-iframe-close {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                z-index: 10;
+                background: #ef4444;
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
     </style>
 </head>
 <body>
+<!-- Animated background particles -->
     <div class="particles" id="particles"></div>
     <div class="container">
         <h1 class="title">Intermittent Fasting: Ilmu di Balik Tren Diet Populer</h1>
         <span class="author">Penulis: Raffi Rizaldi</span>
         <div class="book-container">
             <img src="https://res.cloudinary.com/dl2egfdw2/image/upload/v1752997129/IMG_9436_ae2shx.jpg" 
-                 alt="Intermittent Fasting: Ilmu di Balik Tren Diet Populer" 
+                 alt="Produktivitas Tanpa Burnout" 
                  class="book-cover" />
         </div>
         <div class="desc">
-            Prinsip-prinsip dan penjelasan ilmiah tentang intermittent fasting, manfaat dan risikonya. Dilengkapi tips dan panduan aplikatif untuk pemula maupun praktisi diet.
+                        Prinsip-prinsip dan penjelasan ilmiah tentang intermittent fasting, manfaat dan risikonya. 
         </div>
         <div class="info-grid">
             <div class="info-card">
                 <div class="label">Kategori</div>
-                <div class="value">Desain</div>
+                <div class="value">Diet</div>
             </div>
             <div class="info-card">
                 <div class="label">Halaman</div>
-                <div class="value">50</div>
+                <div class="value">55</div>
             </div>
             <div class="info-card">
                 <div class="label">Bahasa</div>
@@ -89,48 +611,95 @@
                 <span class="star">★</span>
                 <span class="star">★</span>
                 <span class="star">★</span>
-                <span class="star">★</span>
+                <span class="star">☆</span>
             </div>
             <span class="rating-text">4.9/5 (276 ulasan)</span>
         </div>
-        <div class="download-container">
+
+                <div class="button-group">
+            <button class="btn btn-preview" id="previewBtn">
+                <span class="btn-icon">👁️</span>
+                Preview Buku
+            </button>
             <a href="https://drive.google.com/uc?export=download&id=11zG3t61mDD3NeMaS8qKiI7QGCrllEjOm" 
-               class="btn-download" 
+               class="btn btn-download" 
                target="_blank">
-                <span class="download-icon">📥</span>
-                Unduh PDF Gratis
+                <span class="btn-icon download-icon">📥</span>
+                Unduh PDF
+            </a>
+            <a href="home.html" class="btn btn-home">
+                <span class="btn-icon">🏠</span>
+                Kembali ke Home
             </a>
         </div>
     </div>
+
+    <!-- Preview Modal -->
+    <div class="preview-overlay" id="previewOverlay">
+        <div class="preview-container">
+            <div class="preview-controls">
+                <button class="preview-btn btn-home-modal" id="homeBtn">
+                    🏠
+                </button>
+                <button class="preview-btn btn-close" id="closePreview">
+                    ×
+                </button>
+            </div>
+            <iframe class="preview-iframe" id="bookPreview" allow="autoplay" allowfullscreen></iframe>
+            <p class="preview-note">Gunakan dua jari untuk zoom in/out pada perangkat mobile</p>
+        </div>
+    </div>
+
+    <!-- Mobile Fallback (hidden by default) -->
+    <div class="mobile-iframe-fallback" id="mobileFallback">
+        <button class="mobile-iframe-close" id="mobileClose">×</button>
+        <iframe id="mobileIframe" allow="autoplay" allowfullscreen></iframe>
+    </div>
+
+    </div>
     <script>
-        // ...Script sama seperti buku1.html...
+        // Create animated particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
+            
             for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
+                
+                // Random position
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay and duration
                 particle.style.animationDelay = Math.random() * 6 + 's';
                 particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                
                 particlesContainer.appendChild(particle);
             }
         }
+
+        // Add mouse move effect to book cover
         function addMouseEffect() {
             const bookCover = document.querySelector('.book-cover');
             const container = document.querySelector('.container');
+            
             container.addEventListener('mousemove', (e) => {
                 const rect = container.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width;
                 const y = (e.clientY - rect.top) / rect.height;
+                
                 const rotateX = (y - 0.5) * 10;
                 const rotateY = (x - 0.5) * -10;
+                
                 bookCover.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
             });
+            
             container.addEventListener('mouseleave', () => {
                 bookCover.style.transform = 'rotateX(5deg) rotateY(-5deg) scale(1)';
             });
         }
+
+        // Add click animation to stars
         function addStarInteraction() {
             const stars = document.querySelectorAll('.star');
             stars.forEach((star, index) => {
@@ -147,10 +716,114 @@
                 });
             });
         }
+
+        // Preview Functionality
+        const previewBtn = document.getElementById('previewBtn');
+        const closeBtn = document.getElementById('closePreview');
+        const homeBtn = document.getElementById('homeBtn');
+        const previewOverlay = document.getElementById('previewOverlay');
+        const bookPreview = document.getElementById('bookPreview');
+        const mobileFallback = document.getElementById('mobileFallback');
+        const mobileIframe = document.getElementById('mobileIframe');
+        const mobileClose = document.getElementById('mobileClose');
+        const BOOK_ID = '11zG3t61mDD3NeMaS8qKiI7QGCrllEjOm'; // Ganti dengan ID buku yang sesuai
+
+        // Deteksi perangkat mobile
+        function isMobileDevice() {
+            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        function openPreview() {
+            if (isMobileDevice()) {
+                // Gunakan fallback untuk mobile
+                mobileFallback.style.display = 'block';
+                mobileIframe.src = `https://drive.google.com/file/d/${BOOK_ID}/preview`;
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Gunakan modal biasa untuk desktop
+                bookPreview.src = `https://drive.google.com/file/d/${BOOK_ID}/preview`;
+                previewOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closePreview() {
+            if (isMobileDevice()) {
+                mobileFallback.style.display = 'none';
+                mobileIframe.src = '';
+            } else {
+                previewOverlay.classList.remove('active');
+                setTimeout(() => {
+                    bookPreview.src = '';
+                }, 300);
+            }
+            document.body.style.overflow = 'auto';
+        }
+
+        // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             addMouseEffect();
             addStarInteraction();
+            
+            // Preview event listeners
+            previewBtn.addEventListener('click', openPreview);
+            closeBtn.addEventListener('click', closePreview);
+            homeBtn.addEventListener('click', () => {
+                window.location.href = 'home.html';
+            });
+            mobileClose.addEventListener('click', closePreview);
+            
+            // Close when clicking outside content
+            previewOverlay.addEventListener('click', (e) => {
+                if (e.target === previewOverlay) {
+                    closePreview();
+                }
+            });
+            
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closePreview();
+                }
+            });
+            
+            // Mobile gesture for closing (swipe down)
+            if (isMobileDevice()) {
+                let startY;
+                
+                previewOverlay.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                previewOverlay.addEventListener('touchmove', (e) => {
+                    const y = e.touches[0].clientY;
+                    if (y - startY > 100) { // Swipe down threshold
+                        closePreview();
+                    }
+                }, { passive: true });
+                
+                // Juga tambahkan untuk mobile fallback
+                mobileFallback.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                mobileFallback.addEventListener('touchmove', (e) => {
+                    const y = e.touches[0].clientY;
+                    if (y - startY > 100) {
+                        closePreview();
+                    }
+                }, { passive: true });
+            }
+        });
+
+        // Fallback jika iframe tidak dimuat
+        window.addEventListener('message', (event) => {
+            if (event.data === 'iframeFailed' && isMobileDevice()) {
+                closePreview();
+                // Alternatif: Buka di tab baru
+                window.open(`https://drive.google.com/file/d/${BOOK_ID}/preview`, '_blank');
+            }
         });
     </script>
 </body>
