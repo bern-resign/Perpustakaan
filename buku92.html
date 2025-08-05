@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neurohacks: Trik Kognitif yang Terbukti Secara Ilmiah | DigiLib Pro</title>
-    <meta name="description" content="Buku ini mengulas trik kognitif yang terbukti secara ilmiah (neurohacks) untuk meningkatkan kinerja otak, memori, dan fokus dalam kehidupan sehari-hari.">
+    <title>Neurohacks: Trik Kognitif yang Terbukti Secara Ilmiah  | DigiLib Pro</title>
+    <meta name="description" content="Buku ini menjelaskan berbagai model pengkodean yang digunakan dalam literatur ilmiah, memberikan panduan untuk mengolah, menganalisis, dan mengklasifikasikan data.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-* {
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -266,36 +266,82 @@
             font-size: 1.1rem;
         }
 
-        /* Ultra premium download button */
-        .download-container {
-            text-align: center;
+        /* Button styles */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
             margin-top: 3rem;
+            flex-wrap: wrap;
             animation: fadeInUp 1s ease-out 1s both;
         }
 
-        .btn-download {
+        .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-download {
             background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 25%, #f59e0b 50%, #ef4444 75%, #06b6d4 100%);
             background-size: 300% 300%;
             color: #fff;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
             box-shadow: 
                 0 15px 30px rgba(6,182,212,0.2),
                 0 5px 15px rgba(139,92,246,0.1);
             animation: buttonGlow 3s ease-in-out infinite;
         }
 
-        .btn-download::before {
+        .btn-preview {
+            background: linear-gradient(135deg, rgba(6,182,212,0.2) 0%, rgba(139,92,246,0.2) 100%);
+            color: #06b6d4;
+            border: 1px solid rgba(6,182,212,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(5,150,105,0.2) 100%);
+            color: #10b981;
+            border: 1px solid rgba(16,185,129,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-preview:hover {
+            background: linear-gradient(135deg, rgba(6,182,212,0.3) 0%, rgba(139,92,246,0.3) 100%);
+            color: #8b5cf6;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(6,182,212,0.2);
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(135deg, rgba(16,185,129,0.3) 0%, rgba(5,150,105,0.3) 100%);
+            color: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16,185,129,0.2);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(6,182,212,0.3),
+                0 10px 25px rgba(139,92,246,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -306,19 +352,8 @@
             transition: left 0.6s ease;
         }
 
-        .btn-download:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 
-                0 25px 50px rgba(6,182,212,0.3),
-                0 10px 25px rgba(139,92,246,0.2);
-        }
-
-        .btn-download:hover::before {
+        .btn:hover::before {
             left: 100%;
-        }
-
-        .btn-download:active {
-            transform: translateY(-1px) scale(1.02);
         }
 
         @keyframes buttonGlow {
@@ -326,15 +361,121 @@
             50% { background-position: 100% 50%; }
         }
 
-        .download-icon {
+        .btn-icon {
             margin-right: 0.8rem;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+        }
+
+        .download-icon {
             animation: bounce 2s ease-in-out infinite;
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
+        }
+
+        /* Preview Modal */
+        .preview-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .preview-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .preview-container {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            height: 80vh;
+            background: rgba(30,30,45,0.9);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .preview-overlay.active .preview-container {
+            transform: scale(1);
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .preview-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .preview-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        .preview-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+
+        .btn-close {
+            background: rgba(239,68,68,0.7);
+        }
+
+        .btn-close:hover {
+            background: rgba(239,68,68,0.9);
+        }
+
+        .btn-home-modal {
+            background: rgba(16,185,129,0.7);
+        }
+
+        .btn-home-modal:hover {
+            background: rgba(16,185,129,0.9);
+        }
+
+        .preview-note {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            padding: 0 20px;
         }
 
         /* Responsive design */
@@ -354,9 +495,25 @@
                 gap: 0.8rem;
             }
             
-            .btn-download {
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
+            .btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .preview-container {
+                width: 95%;
+                height: 70vh;
+            }
+
+            .preview-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
             }
         }
 
@@ -369,31 +526,78 @@
                 width: 200px;
                 height: 250px;
             }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .preview-container {
+                width: 100%;
+                height: 60vh;
+                border-radius: 0;
+            }
+
+            /* Mobile-specific iframe adjustments */
+            .mobile-iframe-fallback {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2000;
+                background: white;
+            }
+            
+            .mobile-iframe-fallback iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+            
+            .mobile-iframe-close {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                z-index: 10;
+                background: #ef4444;
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 20px;
+                cursor: pointer;
+            }
         }
-</style>
+    </style>
 </head>
 <body>
+<!-- Animated background particles -->
     <div class="particles" id="particles"></div>
+
     <div class="container">
-        <h1 class="title">Neurohacks: Trik Kognitif yang Terbukti Secara Ilmiah Tapi Jarang Diajarkan</h1>
-        <span class="author">Penulis: </span>
+        <h1 class="title">Neurohacks: Trik Kognitif yang Terbukti Secara Ilmiah  </h1>
+        
+        <span class="author">Penulis: Raffi Rizaldi</span>
         <div class="book-container">
-            <img src="https://res.cloudinary.com/dl2egfdw2/image/upload/v1753004705/Screenshot_2025-07-20_163212_vhnavy.png" 
-                 alt="Neurohacks: Trik Kognitif yang Terbukti Secara Ilmiah Tapi Jarang Diajarkan" 
+            <img src="https://res.cloudinary.com/dl2egfdw2/image/upload/v1753004705/Screenshot_2025-07-20_163212_vhnavy.png"  
+                 alt="Retorika Digital & Akses Setara" 
                  class="book-cover" />
         </div>
         <div class="desc">
-Buku ini mengulas trik kognitif yang terbukti secara ilmiah (neurohacks) untuk meningkatkan kinerja otak, memori, dan fokus dalam kehidupan sehari-hari.
+            Buku ini mengulas trik kognitif yang terbukti secara ilmiah (neurohacks) untuk meningkatkan kinerja otak, memori, dan fokus dalam kehidupan sehari-hari.
+            Dengan pendekatan berbasis bukti, buku ini memberikan panduan praktis untuk mengolah, menganalisis, dan mengklasifikasikan data dengan cara yang efektif.
         </div>
-
         <div class="info-grid">
             <div class="info-card">
                 <div class="label">Kategori</div>
-                <div class="value">Pendidikan</div>
+                <div class="value">Umum</div>
             </div>
             <div class="info-card">
                 <div class="label">Halaman</div>
-                <div class="value">50</div>
+                <div class="value">55</div>
             </div>
             <div class="info-card">
                 <div class="label">Bahasa</div>
@@ -404,7 +608,6 @@ Buku ini mengulas trik kognitif yang terbukti secara ilmiah (neurohacks) untuk m
                 <div class="value">PDF</div>
             </div>
         </div>
-
         <div class="rating-container">
             <div class="stars">
                 <span class="star">★</span>
@@ -413,21 +616,52 @@ Buku ini mengulas trik kognitif yang terbukti secara ilmiah (neurohacks) untuk m
                 <span class="star">★</span>
                 <span class="star">☆</span>
             </div>
-            <span class="rating-text">4.6/5 (122 ulasan)</span>
+            <span class="rating-text">4.6/5 ( 121 ulasan)</span>
         </div>
-        
-        <div class="download-container">
+
+                <div class="button-group">
+            <button class="btn btn-preview" id="previewBtn">
+                <span class="btn-icon">👁️</span>
+                Preview Buku
+            </button>
             <a href="https://drive.google.com/uc?export=download&id=1FIyyRsvDKgOxEK-cLUB-HlZUv5XQF8wN" 
-               class="btn-download" 
+               class="btn btn-download" 
                target="_blank">
-                <span class="download-icon">📥</span>
-                Unduh PDF Gratis
+                <span class="btn-icon download-icon">📥</span>
+                Unduh PDF
+            </a>
+            <a href="home.html" class="btn btn-home">
+                <span class="btn-icon">🏠</span>
+                Kembali ke Home
             </a>
         </div>
     </div>
-    
+
+    <!-- Preview Modal -->
+    <div class="preview-overlay" id="previewOverlay">
+        <div class="preview-container">
+            <div class="preview-controls">
+                <button class="preview-btn btn-home-modal" id="homeBtn">
+                    🏠
+                </button>
+                <button class="preview-btn btn-close" id="closePreview">
+                    ×
+                </button>
+            </div>
+            <iframe class="preview-iframe" id="bookPreview" allow="autoplay" allowfullscreen></iframe>
+            <p class="preview-note">Gunakan dua jari untuk zoom in/out pada perangkat mobile</p>
+        </div>
+    </div>
+
+    <!-- Mobile Fallback (hidden by default) -->
+    <div class="mobile-iframe-fallback" id="mobileFallback">
+        <button class="mobile-iframe-close" id="mobileClose">×</button>
+        <iframe id="mobileIframe" allow="autoplay" allowfullscreen></iframe>
+    </div>
+
+    </div>
     <script>
-// Create animated particles
+        // Create animated particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             
@@ -486,13 +720,114 @@ Buku ini mengulas trik kognitif yang terbukti secara ilmiah (neurohacks) untuk m
             });
         }
 
+        // Preview Functionality
+        const previewBtn = document.getElementById('previewBtn');
+        const closeBtn = document.getElementById('closePreview');
+        const homeBtn = document.getElementById('homeBtn');
+        const previewOverlay = document.getElementById('previewOverlay');
+        const bookPreview = document.getElementById('bookPreview');
+        const mobileFallback = document.getElementById('mobileFallback');
+        const mobileIframe = document.getElementById('mobileIframe');
+        const mobileClose = document.getElementById('mobileClose');
+        const BOOK_ID = '1FIyyRsvDKgOxEK-cLUB-HlZUv5XQF8wN'; // Ganti dengan ID buku yang sesuai
+
+        // Deteksi perangkat mobile
+        function isMobileDevice() {
+            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        function openPreview() {
+            if (isMobileDevice()) {
+                // Gunakan fallback untuk mobile
+                mobileFallback.style.display = 'block';
+                mobileIframe.src = `https://drive.google.com/file/d/${BOOK_ID}/preview`;
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Gunakan modal biasa untuk desktop
+                bookPreview.src = `https://drive.google.com/file/d/${BOOK_ID}/preview`;
+                previewOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closePreview() {
+            if (isMobileDevice()) {
+                mobileFallback.style.display = 'none';
+                mobileIframe.src = '';
+            } else {
+                previewOverlay.classList.remove('active');
+                setTimeout(() => {
+                    bookPreview.src = '';
+                }, 300);
+            }
+            document.body.style.overflow = 'auto';
+        }
+
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             addMouseEffect();
             addStarInteraction();
+            
+            // Preview event listeners
+            previewBtn.addEventListener('click', openPreview);
+            closeBtn.addEventListener('click', closePreview);
+            homeBtn.addEventListener('click', () => {
+                window.location.href = 'home.html';
+            });
+            mobileClose.addEventListener('click', closePreview);
+            
+            // Close when clicking outside content
+            previewOverlay.addEventListener('click', (e) => {
+                if (e.target === previewOverlay) {
+                    closePreview();
+                }
+            });
+            
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closePreview();
+                }
+            });
+            
+            // Mobile gesture for closing (swipe down)
+            if (isMobileDevice()) {
+                let startY;
+                
+                previewOverlay.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                previewOverlay.addEventListener('touchmove', (e) => {
+                    const y = e.touches[0].clientY;
+                    if (y - startY > 100) { // Swipe down threshold
+                        closePreview();
+                    }
+                }, { passive: true });
+                
+                // Juga tambahkan untuk mobile fallback
+                mobileFallback.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                mobileFallback.addEventListener('touchmove', (e) => {
+                    const y = e.touches[0].clientY;
+                    if (y - startY > 100) {
+                        closePreview();
+                    }
+                }, { passive: true });
+            }
         });
-</script>
 
+        // Fallback jika iframe tidak dimuat
+        window.addEventListener('message', (event) => {
+            if (event.data === 'iframeFailed' && isMobileDevice()) {
+                closePreview();
+                // Alternatif: Buka di tab baru
+                window.open(`https://drive.google.com/file/d/${BOOK_ID}/preview`, '_blank');
+            }
+        });
+    </script>
 </body>
 </html>
