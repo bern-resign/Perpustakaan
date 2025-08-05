@@ -32,6 +32,39 @@
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 1));
+        }
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-section .container .row {
+            justify-content: center;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .hero-title.elite-gradient-text {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 400% 400%;
+            animation: eliteGradientFlow 8s ease infinite;
+        }
+        .hero-section p {
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
         .elite-gradient-text {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-gold));
             -webkit-background-clip: text;
@@ -47,6 +80,46 @@
             50% { background-position: 50% 100%; }
             75% { background-position: 0% 50%; }
             100% { background-position: 50% 0%; }
+        }
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .success-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            transform: translateX(400px);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+        .success-notification.show {
+            transform: translateX(0);
+        }
+        .success-notification i {
+            font-size: 1.5rem;
+        }
+        .success-notification span {
+            font-size: 1.2rem;
+        }
+        .hero-section .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .particles {
             position: absolute;
@@ -97,6 +170,71 @@
             opacity: 0;
             transition: opacity 0.6s ease;
             z-index: 1;
+        }
+        .elite-card .book-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-top: 1rem;
+        }
+        .elite-card .book-author {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+        .elite-card .book-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+        .elite-card .book-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+        }
+        .elite-card .book-rating .star {
+            color: var(--accent-gold);
+        }
+        .elite-card .book-cover {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .elite-card .book-cover:hover {
+            transform: scale(1.05);
+        }
+        .elite-card .book-info {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .elite-card .book-info h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .elite-card .book-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+        .elite-card .book-info .download-btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .elite-card .book-info .download-btn:hover {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
         }
         .elite-card:hover {
             transform: translateY(-15px) scale(1.02);
@@ -384,11 +522,98 @@
             color: #fff;
             box-shadow: 0 2px 8px rgba(139,92,246,0.15);
         }
+        .pagination .page-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(6,182,212,0.2);
+        }
+        .pagination .page-link:disabled {
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(15, 23, 42, 0.2);
+            cursor: not-allowed;
+        }
         .pagination .page-item.disabled .page-link {
             color: #888;
             background: none;
             cursor: not-allowed;
             opacity: 0.5;
+        }
+        .pagination .page-item:first-child .page-link {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        .pagination .page-item:last-child .page-link {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .pagination .page-item.active .page-link {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(139,92,246,0.15);
+        }
+        .pagination .page-item.active .page-link:hover {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+            color: #fff;
+        }
+        .pagination .page-item.active .page-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(6,182,212,0.2);
+        }
+        .pagination .page-item.disabled .page-link {
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(15, 23, 42, 0.2);
+            cursor: not-allowed;
+        }
+        .pagination .page-item.disabled .page-link:hover {
+            background: rgba(15, 23, 42, 0.2);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .pagination .page-item.disabled .page-link:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .pagination .page-item:first-child .page-link {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        .pagination .page-item:last-child .page-link {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .pagination .page-item.active .page-link {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(139,92,246,0.15);
+        }
+        .pagination .page-item.disabled .page-link {
+            color: #888;
+            background: none;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        .pagination .page-item.active .page-link:hover {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+            color: #fff;
+        }
+        .pagination .page-item.active .page-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(6,182,212,0.2);
+        }
+        .pagination .page-item.disabled .page-link {
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(15, 23, 42, 0.2);
+            cursor: not-allowed;
+        }
+        .pagination .page-item.disabled .page-link:hover {
+            background: rgba(15, 23, 42, 0.2);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .pagination .page-item.disabled .page-link:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .pagination .page-item:first-child .page-link {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
         }
         @keyframes floatParticle {
             0% {
@@ -1872,6 +2097,14 @@
             createFloatingParticles();
             setupEventListeners();
         });
+        // Debounce function to limit the rate of function calls
+        function debounce(func, delay) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), delay);
+            };
+        }   
 
         // Initialize App
         function initializeApp() {
@@ -1979,7 +2212,7 @@
 
         // Render Books
         let currentPage = 1;
-        const booksPerPage = 12;
+        const booksPerPage = 20;
         function renderBooks(booksToRender) {
             bookGrid.innerHTML = '';
             const paginationContainer = document.getElementById('paginationContainer');
@@ -2022,20 +2255,11 @@
                         </div>
                         <div class="p-3 position-relative" style="z-index: 2;">
                             <h5 class="mb-2 fw-bold" style="font-size: 0.95rem;">${book.title || ''}</h5>
-                            <p class="text-muted small mb-2" style="color: #fff;">oleh ${book.author || 'Penulis Tidak Diketahui'}</p>
                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div class="rating-display">
-                                    ${'<i class="fas fa-star star"></i>'.repeat(Math.floor(book.rating || 0))}
-                                    ${(book.rating && book.rating % 1 >= 0.5) ? '<i class="fas fa-star-half-alt star"></i>' : ''}
-                                    <span class="text-white ms-1 small">${book.rating || ''}</span>
-                                </div>
                             </div>
                             <div class="d-flex gap-2 mt-2">
                                 <button class="btn btn-elite btn-sm rounded-pill flex-grow-1" onclick="window.location.href='buku'+${book.id}+'.html'">
                                     <i class="fas fa-eye me-1"></i> Detail
-                                </button>
-                                <button class="btn ${isFavorite ? 'btn-warning' : 'btn-outline-warning'} btn-sm rounded-pill px-3" onclick="window.toggleFavorite(${book.id})">
-                                    <i class="fas fa-heart"></i>
                                 </button>
                             </div>
                         </div>
